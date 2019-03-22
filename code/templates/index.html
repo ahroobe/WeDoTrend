@@ -2,24 +2,29 @@
 	<head>
 		<!-- <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet"> -->
 		<link rel="stylesheet" type="text/css" href="/static/css/theme.css">
-		<title>HyTV</title>
-	
+		<title>HyTV: Main</title>
+		<style>
+			body{
+				margin:0;
+			}
+		</style>
 	</head>
 	<body>
-		<div id="header" style="padding:10px">
-			<img src="/static/img/hynix.png" width="100"/>
-			<h1 class="font_red">하이티비&nbsp;&nbsp;&nbsp;</h1>
-			<h1 class="font_orange">Hynix Trend Viewer</h1>
+	<div class="header" style="padding:5px;" onclick="window.location.href='index'">
+			<!-- <img src="/static/img/hynix.png" width="100"/> -->
+			<h1 style="text-align:center; font-size:1.8em"><span class="font_red" style="font-size:1.2em">하이티비&nbsp;&nbsp;&nbsp;</span><span style="font-size:0.8em; color:orange;">Hynix Trend Viewer</span></h1>
+			<!-- <h1 class="font_orange">Hynix Trend Viewer</h1> -->
+	</div>
+		<div id="title-image">
+			<img src="/static/img/title.png" style="width:100%">
 		</div>
-		<hr class="red_line">
-
 		<div class="card-wrapper">
 			<div class="flip-card">
-			  <div class="flip-card-inner">
-			    <div class="flip-card-front">
-			      <img src="/static/img/graph.png" style="width:300px;height:300px;">
+			  <div class="flip-card-inner" onclick="window.location.href='graph'">
+			    <div class="flip-card-front" >
+			      <img src="/static/img/graph.png" style="width:300px;height:300px; margin: 0 auto;">
 			    </div>
-			    <div class="flip-card-back" onclick="window.location.href='graph'">
+			    <div class="flip-card-back">
 			      <h1>트렌드 분석</h1> 
 			      <p>aaa</p>
 			    </div>
@@ -27,9 +32,9 @@
 			</div>
 
 			<div class="flip-card">
-			  <div class="flip-card-inner">
+			  <div class="flip-card-inner" onclick="window.location.href='keyword'">
 			    <div class="flip-card-front">
-			      <img src="/static/img/keyword.png" style="width:300px;height:300px;">
+			      <img src="/static/img/keyword.png" style="width:300px;height:300px; margin: 0 auto;">
 			    </div>
 			    <div class="flip-card-back">
 			      <h1>블라블라</h1> 

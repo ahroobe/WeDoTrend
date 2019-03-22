@@ -3,6 +3,10 @@
 	font-family: '뫼비우스 Regular', 'Moebius', sans-serif;
 }
 
+html, body {
+	padding: 0;
+	margin: 0;
+}
 body {
 	background-color:#fff;
 }
@@ -11,25 +15,19 @@ body {
 	color: red;
 	height: 10px;
 }
-#header {
+.header {
 	width: 100%;
 	overflow:auto;
 	float:left;
 	display: table;
-	position: fixed;
-	background-color: #fff; 
-	margin:0; 
-	padding:0; 
-	top:0; 
-	left:0;
-
 }
 
 
-#header > * {
+.header > * {
 	margin:0;
 	display: inline-block;
 	vertical-align: middle;
+	text-align:center;
 }
 
 .font_orange {
@@ -107,3 +105,10 @@ body {
   
 }
 
+#title-image {
+	left:0px;
+	margin: 0;
+	top: 80px;
+	height:300px;
+	position:fixed;
+}

@@ -1,5 +1,13 @@
 <html>
 <head>
+	<link rel="stylesheet" type="text/css" href="/static/css/theme.css">
+		<title>HyTV: Trend</title>
+		<style>
+			body{
+				margin:0;
+			}
+		</style>
+
 	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 	 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
@@ -7,6 +15,12 @@
 
 </head>
 <body>
+	<div class="header" style="padding:5px;" onclick="window.location.href='index'">
+			<!-- <img src="/static/img/hynix.png" width="100"/> -->
+			<h1 style="text-align:center; font-size:1.8em"><span class="font_red" style="font-size:1.2em">하이티비&nbsp;&nbsp;&nbsp;</span><span style="font-size:0.8em; color:orange;">Hynix Trend Viewer</span></h1>
+			<!-- <h1 class="font_orange">Hynix Trend Viewer</h1> -->
+	</div>
+
 	<h1 style='margin: 0 auto;'>고객의 소리 통계</h1>
 <!-- 	<div class="col-xs-3">
 		<label> Choose data...</label>
@@ -15,19 +29,24 @@
 			<option value="day">Day</option>
 		</select>
 	</div> -->
+	<div class="graph-wrapper" style="overflow:auto;
+  float:left;
+  display: table;
+  align-content: center;
+  text-align: center;">
+		<div class="chart card" id="statgraph" style="margin:20px;">
+		    <script>
+		        var graphs = {{plot | safe}};
+		        Plotly.plot('statgraph',graphs,{title:'monthly graph'});
+		    </script>
+		</div>
 
-	<div class="chart" id="statgraph">
-	    <script>
-	        var graphs = {{plot | safe}};
-	        Plotly.plot('statgraph',graphs,{});
-	    </script>
-	</div>
-
-	<div class="chart" id="statgraph2">
-	    <script>
-	        var graphs = {{plot2 | safe}};
-	        Plotly.plot('statgraph2',graphs,{});
-	    </script>
+		<div class="chart card" id="statgraph2" style="margin:20px;">
+		    <script>
+		        var graphs = {{plot2 | safe}};
+		        Plotly.plot('statgraph2',graphs,{title:'daily graph'});
+		    </script>
+		</div>
 	</div>
 
 	<script>
@@ -36,6 +55,21 @@
 		})
 	</script>
 
+	<style>
+		.svg-container {
+		  /* Add shadows to create the "card" effect */
+		  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+		  transition: 0.3s;
+		  display: inline-block;
+		  margin: 0 auto;
+		  text-align:;
 
+		}
+
+		/* On mouse-over, add a deeper shadow */
+		.svg-container:hover {
+		  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+		}
+	</style>
 </body>
 </html>
