@@ -1,0 +1,41 @@
+<html>
+<head>
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+
+
+</head>
+<body>
+	<h1 style='margin: 0 auto;'>고객의 소리 통계</h1>
+<!-- 	<div class="col-xs-3">
+		<label> Choose data...</label>
+		<select class="form-control" id="first">
+			<option value="month">Month</option>
+			<option value="day">Day</option>
+		</select>
+	</div> -->
+
+	<div class="chart" id="statgraph">
+	    <script>
+	        var graphs = {{plot | safe}};
+	        Plotly.plot('statgraph',graphs,{});
+	    </script>
+	</div>
+
+	<div class="chart" id="statgraph2">
+	    <script>
+	        var graphs = {{plot2 | safe}};
+	        Plotly.plot('statgraph2',graphs,{});
+	    </script>
+	</div>
+
+	<script>
+		statgraph.on('plotly_click',function(data){
+			alert(data.points[0].x);
+		})
+	</script>
+
+
+</body>
+</html>
