@@ -1,10 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Tue Aug 21 20:01:24 2018
-
-@author: Gonie
-"""
-
  
 import pandas as pd
 import numpy as np
@@ -47,17 +41,6 @@ def pre_LDA(data):
      
     return documents, dictionary, corpus, doc_term_matrix
  
-'''     
-def load_data_LDA(data_paths, contents, data_types):
-    for data_path in data_paths:
-  
-        data_name = os.path.split(data_path)[1]
-        _, content, data_type = data_name.replace('.xlsx', '').split('_')
-        if content == contents and data_type == data_types:
-            data = pd.read_excel(data_path, encodeing='cp949')
- 
-            return data
-'''
  
 def plot_counts_per_topic(idx_lists):
     xs = np.arange(len(idx_lists))
