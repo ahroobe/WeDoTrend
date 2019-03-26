@@ -1,0 +1,83 @@
+<html>
+	<head>
+		<!-- <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet"> -->
+		 <script type="text/javascript" src="/static/js/side_menu.js"></script>
+		<link rel="stylesheet" type="text/css" href="/static/css/theme2.css">
+		<link rel="stylesheet" type="text/css" href="/static/css/theme.css">
+		<title>HyTV: Keyword</title>
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+			}
+		</style>
+
+	</head>
+	<body>
+	<div id="mySidenav" class="sidenav">
+		  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		  <a href="#">About</a>
+		  <a href="#">Services</a>
+		  <a href="#">Clients</a>
+		  <a href="#">Contact</a>
+	</div>
+
+	<div id="main" style="margin:0;padding:0;">
+
+	<div class="main_header" style="height:270px; margin-bottom:50px;">
+		<div class="bar-father">
+			<div class="icon icon-bar" onclick="openNav()">
+				<div class="bar"></div>
+				<div class="bar"></div>
+				<div class="bar"></div>
+			</div>
+			<h1 class="icon" style="margin: 0px; margin-left: 10px;"><span style="color:white; font-size:1.0em;">HyTV</span>
+			<span style="color:orange; font-size:0.5em;">Hynix Trend Viewer</span></h1>
+			<img src="/static/img/hynix.png" style="height:30px;position:absolute;right:30px;top:5px;"/>
+		
+		</div>
+		<h1 style="color: orange; margin-top:100px; font-size:2.4em; text-align:center;">기간 별 조회</h1>
+	</div>
+	<div style="margin: 0 auto; position:relative;display:table;">
+		<form class="form-inline" action="">
+			
+			<input type="date" id="from" name="from">
+			<label for="start">부터</label>
+			
+			<input type="date" id="to" name="to">
+			<label for="to">까지</label>
+
+			<input type="number" id="topic_num" placeholder="3" name="topic_num" style="width:80px;">
+			<label for="to">개의 topic으로</label>
+
+			<button type="submit" style="border-radius:12px; font-size:20px">분석</button>
+		</form>
+	</div>
+
+	<div id="report">
+		<table class="left-table">
+			<tr>
+				<th>글자 수</th>
+				<td>100</td>
+			</tr>
+			<tr>
+				<th>토픽 수</th>
+				<td>100</td>
+			</tr>
+			<tr>
+				<th>기간</th>
+				<td>2018-08-01 ~ 2019-01-01</td>
+			</tr>
+			<tr>
+				<th>결과</th>
+				<td>보러 가기</td>
+			</tr>
+		</table>
+
+	
+	</div>
+
+	</div>
+
+	</body>
+</html>

@@ -1,49 +1,74 @@
 <html>
 	<head>
 		<!-- <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet"> -->
+		<script type="text/javascript" src="/static/js/side_menu.js"></script>
+		<link rel="stylesheet" type="text/css" href="/static/css/theme2.css">
 		<link rel="stylesheet" type="text/css" href="/static/css/theme.css">
 		<title>HyTV: Main</title>
 		<style>
-			body{
-				margin:0;
+			body {
+				margin: 0;
+				padding: 0;
 			}
 		</style>
 	</head>
 	<body>
-	<div class="header" style="padding:5px;" onclick="window.location.href='index'">
-			<!-- <img src="/static/img/hynix.png" width="100"/> -->
-			<h1 style="text-align:center; font-size:1.8em"><span class="font_red" style="font-size:1.2em">하이티비&nbsp;&nbsp;&nbsp;</span><span style="font-size:0.8em; color:orange;">Hynix Trend Viewer</span></h1>
-			<!-- <h1 class="font_orange">Hynix Trend Viewer</h1> -->
+
+
+	<div id="mySidenav" class="sidenav">
+		  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		  <a href="#">홈</a>
+		  <a href="#">Services</a>
+		  <a href="#">Clients</a>
+		  <a href="#">Contact</a>
 	</div>
-		<div id="title-image">
-			<img src="/static/img/title.png" style="width:100%">
-		</div>
-		<div class="card-wrapper">
-			<div class="flip-card">
-			  <div class="flip-card-inner" onclick="window.location.href='graph'">
-			    <div class="flip-card-front" >
-			      <img src="/static/img/graph.png" style="width:300px;height:300px; margin: 0 auto;">
-			    </div>
-			    <div class="flip-card-back">
-			      <h1>트렌드 분석</h1> 
-			      <p>aaa</p>
-			    </div>
-			  </div>
+
+
+	
+	<div id="main" style="margin:0;padding:0;">
+
+
+	<div class="main_header">
+		<div class="bar-father">
+			<div class="icon icon-bar" onclick="openNav()">
+				<div class="bar"></div>
+				<div class="bar"></div>
+				<div class="bar"></div>
 			</div>
-
-			<div class="flip-card">
-			  <div class="flip-card-inner" onclick="window.location.href='keyword'">
-			    <div class="flip-card-front">
-			      <img src="/static/img/keyword.png" style="width:300px;height:300px; margin: 0 auto;">
-			    </div>
-			    <div class="flip-card-back">
-			      <h1>블라블라</h1> 
-			      <p>aaa</p>
-			    </div>
-			  </div>
-			</div>
-
-
+			<h1 class="icon" style="margin: 0px; margin-left: 10px;"><span style="color:white; font-size:1.0em;">HyTV</span>
+			<span style="color:orange; font-size:0.5em;">Hynix Trend Viewer</span></h1>
+			<img src="/static/img/hynix.png" style="height:30px;position:absolute;right:30px;top:5px;"/>
+			
 		</div>
+		
+		<!-- <h1 style="margin: 0 auto; top: 100px; z-index: 100; color: white; display: inline-block; position: absolute; text-align: center;">We Do Trend</h1> -->
+		<img src="/static/img/title2.png" height="300px" style="margin: 0 auto; display:block;">
+
+	</div>
+	<div class="card-wrapper">	
+		<div class="container" onclick="window.location.href='graph'">
+		  <img src="/static/img/graph.png" alt="Avatar" class="image">
+		  <div class="overlay">
+		    <div class="text">
+		    	<h1>그래프</h1>
+		    	<h2>그래프에서는 이런걸 할 수 있죠</h2>
+		    </div>
+		  </div>
+		</div>
+
+		<div class="container" onclick="window.location.href='keyword'">
+		  <img src="/static/img/keyword.png" alt="Avatar" class="image">
+		  <div class="overlay">
+		    <div class="text">
+		    	<h1>키워드</h1>
+		    	<h2>키워드에서는 이런걸 할 수 있죠</h2>
+		    </div>
+		  </div>
+		</div>
+
+
+	</div>
+</div>
+
 	</body>
 </html>
