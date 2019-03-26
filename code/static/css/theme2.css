@@ -1,0 +1,343 @@
+.main_header{
+	background-color:black;
+	overflow:hidden;
+	float: left;
+	width: 100%;
+}
+
+.bar-father {
+	display:inline-block;
+	position:fixed;
+	float: left;
+	margin: 0;
+	width: 100%;
+	z-index:100;
+	background-color:black;
+}
+
+.icon {
+	display: inline-block;
+	vertical-align: center;
+	margin-left:10px;
+}
+
+.icon-bar{
+	padding-top:5px;
+	cursor: pointer;
+}
+.icon-bar:hover{
+
+	opacity:0.4;
+
+}
+.keyword-keeper {
+	margin: 0 auto;
+	position: relative;
+	display:table;
+	width: 80%;
+	text-align:center;
+	align-content: center;
+}
+
+.keyword {
+
+	border: solid #000;
+	border-top-width:1px;
+	border-bottom-width:1px;
+	border-left-width:0px;
+	border-right-width:0px;
+	position: relative;
+	margin: 0 auto;
+	width: 400px;
+	display: inline-block;
+	padding: 20px;
+	text-align: center;
+	margin: 10px;
+	vertical-align: center;
+}
+
+.line {
+
+	margin: 0 auto;
+	width: 350px;
+	height: 1px;
+	background-color: black;
+}
+
+.keyword > * {
+	position: relative;
+}
+
+.bar {
+  width: 30px;
+  height: 3px;
+  border-radius: 30px;
+  background-color: white;
+  margin: 6px 0;
+}
+
+
+/*for navigation*/
+.sidenav {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: black; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s;
+  padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+
+
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 60px;
+}
+
+
+.stat-graph {
+	box-shadow: 2px 4px 8px 2px rgba(0,0,0,0.2);
+	position: relative;
+	margin: 0 auto;
+	width: 600px;
+	height:400px;
+	display: inline-block;
+	text-align: center;
+	margin: 10px;
+	vertical-align: center;
+	border-radius: 5px;
+	transition: 0.3s;
+	display: inline-block;
+	/*background-color:black;*/
+}
+
+.keyword:hover * {
+	color:#4765f7;
+}
+
+.keyword div:hover {
+	background-color:#eee;
+}
+
+.top5 {
+	position: relative;
+	overflow:hidden;
+}
+.top5 h2 {
+	display: inline-block;
+}
+.hoverimg:hover {
+	opacity:0.3;
+}
+.hoverimg {
+	position: absolute;
+	right: 20px;
+	top:38px;
+	cursor: pointer;
+}
+
+
+/*modal */
+
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 500; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (Image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+/* Caption of Modal Image (Image Text) - Same Width as the Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation - Zoom in the Modal */
+.modal-content, #caption { 
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+
+/* Style the form - display items horizontally */
+.form-inline { 
+  align-items: center;
+}
+
+/* Add some margins for each label */
+.form-inline label {
+  margin: 5px 10px 5px 0;
+}
+
+/* Style the input fields */
+.form-inline input {
+  text-align: center;
+  vertical-align: middle;
+  margin: 5px 10px 5px 0;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+/* Style the submit button */
+.form-inline button {
+  padding: 8px 15px;
+  background-color: rgb(245,128,37);
+  border: 1px solid #ddd;
+  color: white;
+}
+
+.form-inline button:hover {
+  background-color:#ccc;
+  color: black;
+}
+
+/* Add responsiveness - display the form controls vertically instead of horizontally on screens that are less than 800px wide */
+@media (max-width: 800px) {
+  .form-inline input {
+    margin: 10px 0;
+  }
+
+  .form-inline {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.left-table {
+  /*width: ;*/
+  margin: 10 auto;
+  font-size: 22px;
+  /*border-spacing: 5px;*/
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+}
+.left-table th {
+  background-color: rgb(245,128,37);
+  color: white;
+  border-right: 1px solid rgb(245,128,37);
+  padding: 10px;
+}
+.left-table td, .left-table tr {
+  border: 1px solid #ddd;
+}
+.left-table td {
+  font-size: 18px;
+  padding: 10px;
+  text-align:center;
+}
+.left-table tr:hover {
+  background-color: #eee;
+}
+
+.pointer {
+  cursor:pointer;
+}
+
+.border {
+  padding: 20px;
+  border: solid #000;
+  border-top-width:1px;
+  border-bottom-width:1px;
+  border-left-width:0px;
+  border-right-width:0px;
+}
