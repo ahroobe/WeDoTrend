@@ -13,17 +13,17 @@ function closeNav() {
 }
 
 
-function openModal(){
+function openModal(path,topic){
 
   var modal = document.getElementById('myModal');
   // Get the image and insert it inside the modal - use its "alt" text as a caption
-	var cloud1 = document.getElementById('cloud1');
-	var modalImg = document.getElementById("img01");
-	var captionText = document.getElementById("caption");
+  var cloud1 = document.getElementById('cloud1');
+  var modalImg = document.getElementById("img01");
+  var captionText = document.getElementById("caption");
 
   modal.style.display = "block";
-  modalImg.src = "img/word1.jpg";
-  captionText.innerHTML = "무슨 토픽에 대한 워드 클라우드";
+  modalImg.src = "/content/TOPIC_PNG/"+path;
+  captionText.innerHTML = topic+"의 워드 클라우드";
 }
 
 // Get the <span> element that closes the modal
