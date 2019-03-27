@@ -1,0 +1,302 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="/static/css/theme.css">
+	<script type="text/javascript" src="/static/js/side_menu.js"></script>
+	<link rel="stylesheet" type="text/css" href="/static/css/theme2.css">
+		<title>HyTV: Total</title>
+		<style>
+			body{
+				margin:0;
+			}
+
+			/* Style the links inside the sidenav */
+#mySidenav2 a {
+  position: fixed; /* Position them relative to the browser window */
+  right: -80px; /* Position them outside of the screen */
+  z-index: 500000;
+  transition: 0.3s; /* Add transition on hover */
+  padding: 15px; /* 15px padding */
+  width: 100px; /* Set a specific width */
+  text-decoration: none; /* Remove underline */
+  font-size: 20px; /* Increase font size */
+  color: white; /* White text color */
+  border-radius: 5px 0px 0px 5px; /* Rounded corners on the top right and bottom right side */
+}
+
+#mySidenav2 a:hover {
+  right: 0; /* On mouse-over, make the elements appear as they should */
+}
+
+/* The about link: 20px from the top with a green background */
+#topic1 {
+  top: 120px;
+  background-color: #4CAF50;
+}
+
+#topic2 {
+  top: 180px;
+  background-color: #2196F3; /* Blue */
+}
+
+#topic3 {
+  top: 240px;
+  background-color: #f44336; /* Red */
+}
+
+#topic4 {
+  top: 300px;
+  background-color: #555 /* Light Black */
+}
+#topic5 {
+	top: 360px;
+	background-color: #111;
+}
+
+
+		</style>
+
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+
+
+</head>
+<body>
+
+
+	<div id="mySidenav2">
+		<a href="#" id="topic1" >topic1</a>
+	  <a href="#" id="topic2">topic2</a>
+	  <a href="#" id="topic3">topic3</a>
+	  <a href="#" id="topic4">topic4</a>
+	  <a href="#" id="topic5">topic5</a>
+		  
+		  <script>
+		  	 $("#topic1").click(function (){
+                $('html, body').animate({
+                    scrollTop: $("#topic_div0").offset().top-50
+                }, 500);
+            });
+		  	 $("#topic2").click(function (){
+                $('html, body').animate({
+                    scrollTop: $("#topic_div1").offset().top-50
+                }, 500);
+            });
+		  	 $("#topic3").click(function (){
+                $('html, body').animate({
+                    scrollTop: $("#topic_div2").offset().top-50
+                }, 500);
+            });
+		  	 $("#topic4").click(function (){
+                $('html, body').animate({
+                    scrollTop: $("#topic_div3").offset().top-50
+                }, 500);
+            });
+		  	 $("#topic5").click(function (){
+                $('html, body').animate({
+                    scrollTop: $("#topic_div4").offset().top-50
+                }, 500);
+            });
+		  </script>
+
+	</div>
+
+
+	<div id="mySidenav" class="sidenav">
+		  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		  <a href="#">About</a>
+		  <a href="#">Services</a>
+		  <a href="#">Clients</a>
+		  <a href="#">Contact</a>
+	</div>
+
+	<div id="main" style="margin:0;padding:0;">
+
+	<div id="myModal" class="modal">
+		  <!-- The Close Button -->
+	  <span class="close" onclick="closeModal();">&times;</span>
+
+
+	  <!-- Modal Content (The Image) -->
+	  <img class="modal-content" id="img01">
+
+	  <!-- Modal Caption (Image Text) -->
+	  <div id="caption"></div>
+
+	</div>
+
+
+	<div class="main_header" style="height:270px; margin-bottom:100px;">
+		<div class="bar-father">
+			<div class="icon icon-bar" onclick="openNav()">
+				<div class="bar"></div>
+				<div class="bar"></div>
+				<div class="bar"></div>
+			</div>
+			<h1 class="icon" style="margin: 0px; margin-left: 10px;"><span style="color:white; font-size:1.0em;">HyTV</span>
+			<span style="color:orange; font-size:0.5em;">Hynix Trend Viewer</span></h1>
+			<img src="/static/img/hynix.png" style="height:30px;position:absolute;right:30px;top:5px;"/>
+
+		</div>
+					<h1 style="color: orange; margin-top:100px; font-size:2.4em; text-align:center;">전체 데이터 분석 결과</h1>
+	</div>
+
+	<table class="left-table">
+		<tr>
+			<th>기간</th>
+			<td>2008-04-04 ~ 2019-03-21</td>
+		</tr>
+		<tr>
+			<th>게시글 수</th>
+			<td>9,240</td>
+		</tr>
+		<tr>
+			<th>단어 수</th>
+			<td>9,2400000</td>
+		</tr>
+	</table>
+
+	<table class="left-table">
+		
+
+		<tr>
+			<th></th>
+			<th>Topic 1</th>
+			<th>Topic 2</th>
+			<th>Topic 3</th>
+			<th>Topic 4</th>
+			<th>Topic 5</th>
+		</tr>
+		<tr>
+			<th>주제</th>
+			<td>식당/편의식 시스템 불만/건의</td>
+			<td>버스 칭찬/분실물 문의/서비스 평가</td>
+			<td>버스 노선 문의/불만</td>
+			<td>식당 메뉴 관련 의견</td>
+			<td>버스 내 환경/인프라에 대한 건의</td>
+		</tr>
+		<tr>
+			<th>게시글 수</th>
+			<td>2</td>
+			<td>2</td>
+			<td>2</td>
+			<td>2</td>
+			<td>2</td>
+		</tr>
+		<tr>
+			<th>단어 수</th>
+			<td>2</td>
+			<td>2</td>
+			<td>2</td>
+			<td>2</td>
+			<td>2</td>
+		</tr>
+	</table>
+
+{% for graphe in plot %}	
+	<div id="topic_div{{loop.index0}}" style="border:1px solid #eee; border-radius:20px;
+	 width:80%; margin:20 auto; padding-bottom:50px; height:auto;">
+		<h1 style="margin: 30 auto; text-align:center; padding:100px vertical-align:center; ">Topic 1</h1>
+
+			<div class="stat-graph2" style="width: 650px; margin:20px;">
+				<div >
+				<div id="statgraph4{{loop.index0}}">
+				    <script>
+				        var graphs = {{donut[loop.index0] | safe}};
+				        Plotly.plot('statgraph4{{loop.index0}}',graphs);
+			    	</script>
+				</div>
+			</div>
+			</div>
+
+			<div class="stat-graph2">
+				<div style="margin-top:100px;">
+					<div class="keyword" style="width:450px; margin-left:150px;">
+					
+					<h1>키워드 Top 5</h1>
+					<img id="cloud1" src="/static/img/wordcloud.png" width="50px" class="hoverimg" onclick="openModal('워드클라우드_{{loop.index0}}.png','토픽1')">
+					{% for value in key[loop.index0] %}
+					<div class="top5">
+						<h2 style="float: left; font-size:20px;">{{loop.index0+1}}: {{value[0]}}</h2>
+						<h2 style="float: right; font-size:20px;">{{value[1]}}회</h2>
+					</div>
+					{% endfor %}
+					
+				</div>
+				</div>
+			</div>
+
+
+		<div class="keyword-keeper">
+			<div class="stat-graph2" style="width: 1400px; margin:20px;">
+				<div style="">
+					<div id="statgraph1{{loop.index0}}">
+						<script>
+				        var graphs = {{graphe[2] | safe}};
+				        Plotly.plot('statgraph1{{loop.index0}}',graphs);
+				    </script>
+				</div>
+				</div>
+			</div>
+			<div class="stat-graph2" style="width: 650px; margin:20px;">
+				<div >
+				<div id="statgraph2{{loop.index0}}">
+				    <script>
+				        var graphs = {{graphe[1] | safe}};
+				        Plotly.plot('statgraph2{{loop.index0}}',graphs);
+			    	</script>
+				</div>
+			</div>
+			</div>
+
+			<div class="stat-graph2" style="width: 650px; margin:20px;">
+				<div>
+					<div id="statgraph3{{loop.index0}}">
+				    <script>
+				        var graphs = {{graphe[0] | safe}};
+				        Plotly.plot('statgraph3{{loop.index0}}',graphs);
+			    	</script>
+				</div>
+				</div>
+			</div>
+
+
+
+
+	</div>
+	<div style="height:50px;">
+	</div>
+
+	</div>
+
+{% endfor %}
+
+
+	</div>
+	<!-- 
+	<script>
+		statgraph.on('plotly_click',function(data){
+			alert(data.points[0].x);
+		})
+	</script> -->
+
+
+
+<script>
+
+function openModal(path,topic){
+
+  var modal = document.getElementById('myModal');
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  var cloud1 = document.getElementById('cloud1');
+  var modalImg = document.getElementById("img01");
+  var captionText = document.getElementById("caption");
+
+  modal.style.display = "block";
+  modalImg.src = "/static/img/"+path;
+  captionText.innerHTML = topic+"의 워드 클라우드";
+}
+
+</script>
+</body>
+</html>

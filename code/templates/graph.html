@@ -45,7 +45,7 @@
 	
 	<h1 style="margin: 0 auto; text-align:center; padding:100px vertical-align:center; margin-bottom:100px;">일/주별 고객의 소리 통계</h1>
 	<div class="keyword-keeper">
-		<div class="stat-graph">
+		<div class="stat-graph2" style="width:1000px;float:left;">
 			<div style="padding-bottom:50px;">
 			<div id="statgraph">
 				<script>
@@ -55,7 +55,18 @@
 			</div>
 			</div>
 		</div>
-		<div class="stat-graph">
+		<div id = "keyword1" class="stat-graph2 keyword" style="width:300px;height:auto;float:right; display:none;">
+			
+					<h1 id="keyword1_h1">키워드 Top 5</h1>
+					<div class="top5">
+						<h2 style="float: left; font-size:20px;">2</h2>
+						<h2 style="float: right; font-size:20px;">3</h2>
+					</div>
+
+		</div>
+
+
+		<div class="stat-graph2" style="width:70%;float:left;">
 			<div style="padding-bottom:50px;">
 			<div id="statgraph2">
 			    <script>
@@ -86,12 +97,19 @@
 
 
 	</div>
-	<!-- 
+	
 	<script>
 		statgraph.on('plotly_click',function(data){
-			alert(data.points[0].x);
+			var key_div =document.getElementById("keyword1");
+			var h1 =document.getElementById("keyword1_h1");
+			
+			h1.innerHTML = data.points[0].x;
+			key_div.style.display="block";
+
+			// alert(data.points[0].x);
+
 		})
-	</script> -->
+	</script>
 
 </body>
 </html>
