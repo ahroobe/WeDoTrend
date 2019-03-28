@@ -795,10 +795,3 @@ def show_graph():
 if __name__ == "__main__":
     app.run(host='59.29.224.81',threaded=True)
 
-
-# In[23]:
-
-
-for i in range(0,5):
-    df[df.index.isin(assign_list[i])].to_excel('./checkitout_%s.xlsx'%(i))
-
