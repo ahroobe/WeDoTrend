@@ -19,11 +19,12 @@
 	display: inline-block;
 	vertical-align: center;
 	margin-left:10px;
+  cursor: pointer;
 }
 
 .icon-bar{
 	padding-top:5px;
-	cursor: pointer;
+/*	cursor: pointer;*/
 }
 .icon-bar:hover{
 
