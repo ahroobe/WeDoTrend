@@ -1,6 +1,8 @@
 # WeDoTrend
 Hynix Trend Viewer (신입사원 python 교육 프로젝트)
 
+* 실행 파일: ./code/web_flask.ipynb or ./code/web_flask.py
+
 ## **Member** : 김다혜, **박헌준(조장)**, 이수연, 채선율 
 
 ## 목적 및 의의
