@@ -17,10 +17,10 @@
 
 	<div id="mySidenav" class="sidenav">
 		  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		  <a href="#">홈</a>
-		  <a href="#">Services</a>
-		  <a href="#">Clients</a>
-		  <a href="#">Contact</a>
+		  <a href="{{url_for('index')}}">홈</a>
+		  <a href="{{url_for('graph')}}">트렌드 차트</a>
+		  <a href="{{url_for('allgraph')}}">분석 결과</a>
+		  <a href="{{url_for('select')}}">분석 시스템</a>
 	</div>
 
 
@@ -35,7 +35,7 @@
 				<div class="bar"></div>
 				<div class="bar"></div>
 			</div>
-			<h1 class="icon" style="margin: 0px; margin-left: 10px;"><span style="color:white; font-size:1.0em;">HyTV</span>
+			<h1 class="icon" style="margin: 0px; margin-left: 10px;" onclick="window.location.href='index'"><span style="color:white; font-size:1.0em;">HyTV</span>
 			<span style="color:orange; font-size:0.5em;">Hynix Trend Viewer</span></h1>
 			<img src="/static/img/hynix.png" style="height:30px;position:absolute;right:30px;top:5px;"/>
 			
@@ -47,24 +47,36 @@
 	</div>
 	<div class="card-wrapper">	
 		<div class="container" onclick="window.location.href='graph'">
-		  <img src="/static/img/graph.png" alt="Avatar" class="image">
+		  <img src="/static/img/trend.png" alt="Avatar" class="image">
 		  <div class="overlay">
 		    <div class="text">
-		    	<h1>그래프</h1>
-		    	<h2>그래프에서는 이런걸 할 수 있죠</h2>
+		    	<h1>트렌드</h1>
+		    	<h2>전체 흐름 파악</h2>
 		    </div>
 		  </div>
 		</div>
 
-		<div class="container" onclick="window.location.href='keyword'">
-		  <img src="/static/img/keyword.png" alt="Avatar" class="image">
+		<div class="container" onclick="window.location.href='all_graph'">
+		  <img src="/static/img/chart.png" alt="Avatar" class="image">
 		  <div class="overlay">
 		    <div class="text">
-		    	<h1>키워드</h1>
-		    	<h2>키워드에서는 이런걸 할 수 있죠</h2>
+		    	<h1>결과</h1>
+		    	<h2>전체 결과 확인</h2>
 		    </div>
 		  </div>
 		</div>
+
+		<div class="container" onclick="window.location.href='select'">
+		  <img src="/static/img/search.png" alt="Avatar" class="image">
+		  <div class="overlay">
+		    <div class="text">
+		    	<h1>분석</h1>
+		    	<h2>커스텀 분석</h2>
+		    </div>
+		  </div>
+		</div>
+
+
 
 
 	</div>

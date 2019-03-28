@@ -1,78 +1,269 @@
 <html>
-	<head>
-		<!-- <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet"> -->
-		 <script type="text/javascript" src="/static/js/side_menu.js"></script>
-		<link rel="stylesheet" type="text/css" href="/static/css/theme2.css">
-		<link rel="stylesheet" type="text/css" href="/static/css/theme.css">
-		<title>HyTV: Dashboard</title>
+<head>
+	<link rel="stylesheet" type="text/css" href="/static/css/theme.css">
+	<script type="text/javascript" src="/static/js/side_menu.js"></script>
+	<link rel="stylesheet" type="text/css" href="/static/css/theme2.css">
+		<title>HyTV: Select-look</title>
 		<style>
-			body {
-				margin: 0;
-				padding: 0;
+			body{
+				margin:0;
+				padding:0;
 			}
+
+		
+			/* Style the links inside the sidenav */
+#mySidenav2 a {
+  position: fixed; /* Position them relative to the browser window */
+  right: -80px; /* Position them outside of the screen */
+  z-index: 500000;
+  transition: 0.3s; /* Add transition on hover */
+  padding: 15px; /* 15px padding */
+  width: 100px; /* Set a specific width */
+  text-decoration: none; /* Remove underline */
+  font-size: 20px; /* Increase font size */
+  color: white; /* White text color */
+  border-radius: 5px 0px 0px 5px; /* Rounded corners on the top right and bottom right side */
+}
+
+#mySidenav2 a:hover {
+  right: 0; /* On mouse-over, make the elements appear as they should */
+}
+
+/* The about link: 20px from the top with a green background */
+#topic1 {
+  top: 120px;
+  background-color: #4CAF50;
+}
+
+#topic2 {
+  top: 180px;
+  background-color: #2196F3; /* Blue */
+}
+
+#topic3 {
+  top: 240px;
+  background-color: #f44336; /* Red */
+}
+
+#topic4 {
+  top: 300px;
+  background-color: #555 /* Light Black */
+}
+#topic5 {
+	top: 360px;
+	background-color: #111;
+}
 		</style>
 
-	</head>
-	<body>
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+
+
+</head>
+<body>
+
+
+	
+
+
 	<div id="mySidenav" class="sidenav">
 		  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		  <a href="#">About</a>
-		  <a href="#">Services</a>
-		  <a href="#">Clients</a>
-		  <a href="#">Contact</a>
+		  <a href="{{url_for('index')}}">홈</a>
+		  <a href="{{url_for('graph')}}">트렌드 차트</a>
+		  <a href="{{url_for('allgraph')}}">분석 결과</a>
+		  <a href="{{url_for('select')}}">분석 시스템</a>
 	</div>
+
+
 
 	<div id="main" style="margin:0;padding:0;">
 
-	<div class="main_header" style="height:270px; margin-bottom:50px;">
+
+	<div id="mySidenav2">
+		{% for k in day %}
+			<a href="#" id = 'topic{{loop.index0+1}}'>topic{{loop.index0+1}}</a>
+		{% endfor %}
+	</div>
+
+	
+<script>
+		{% for k in day %}
+		$('#topic{{loop.index0+1}}').click(function(){
+			$('html, body').animate({
+				scrollTop: $('#topic_div{{loop.index0}}').offset().top-50
+			},500);
+		})
+		{% endfor %}
+	</script>
+
+
+
+	<div id="myModal" class="modal">
+		  <!-- The Close Button -->
+	  <span class="close" onclick="closeModal();">&times;</span>
+
+
+	  <!-- Modal Content (The Image) -->
+	  <img class="modal-content" id="img01">
+
+	  <!-- Modal Caption (Image Text) -->
+	  <div id="caption"></div>
+
+	</div>
+
+
+	<div class="main_header" style="height:270px; margin-bottom:100px;">
 		<div class="bar-father">
 			<div class="icon icon-bar" onclick="openNav()">
 				<div class="bar"></div>
 				<div class="bar"></div>
 				<div class="bar"></div>
 			</div>
-			<h1 class="icon" style="margin: 0px; margin-left: 10px;"><span style="color:white; font-size:1.0em;">HyTV</span>
-			<span class="font_orange" style="font-size:0.5em;">Hynix Trend Viewer</span></h1>
+			<h1 class="icon" style="margin: 0px; margin-left: 10px;" onclick="window.location.href='index'"><span style="color:white; font-size:1.0em;">HyTV</span>
+			<span style="color:orange; font-size:0.5em;">Hynix Trend Viewer</span></h1>
 			<img src="/static/img/hynix.png" style="height:30px;position:absolute;right:30px;top:5px;"/>
-		
+			
 		</div>
-		<h1 class="font_orange" style="margin-top:100px; font-size:2.4em; text-align:center;">기간 별 조회</h1>
+					<h1 style="color: orange; margin-top:100px; font-size:2.4em; text-align:center;">{{direc}} 분석 결과 (Topic 수: {{topics}})</h1>
 	</div>
-	<div class="border" style="margin: 0 auto; position:relative;display:table; ">
-		<h1 style="text-align:center; padding-bottom:10px;" class="font_orange">메인 분석</h1>
-		<h2 style="text-align:center;">기간: 2017-08-01 ~ 2018-09-01</h2>
-		<h2 style="text-align:center;">토픽 수: 2</h2>
+
+
+	<table class="left-table">
+		<tr>
+			<th>기간</th>
+			<td>{{term}}</td>
+		</tr>
+		<tr>
+			<th>게시글 수</th>
+			<td>{{length}}</td>
+		</tr>
+	</table>
+
+	<table class="left-table">
 		
+
+		<tr>
+			<th></th>
+			{% for le in tot_len %}
+			<th>Topic {{loop.index0+1}}</th>
+			{% endfor %}
+		</tr>
+		<tr>
+			<th>게시글 수</th>
+			{% for le in tot_len %}
+				<td>{{le}}</td>
+			{% endfor %}
+
+		</tr>
+
+	</table>
+
+
+{% for day_plot in day %}	
+	<div id="topic_div{{loop.index0}}" style="border:1px solid #eee; border-radius:20px;
+	 width:80%; margin:auto; padding-bottom:50px; height:auto;">
+		<h1 style="margin: 30 auto; text-align:center; padding:100px vertical-align:center; ">Topic {{loop.index0+1}}</h1>
+
+			<div class="stat-graph2" style="width: 650px; margin:20px;">
+				<div >
+				<div id="statgraph4{{loop.index0}}">
+				    <script>
+				        var graphs = {{donut[loop.index0] | safe}};
+				        Plotly.plot('statgraph4{{loop.index0}}',graphs);
+			    	</script>
+				</div>
+			</div>
+			</div>
+
+			<div class="stat-graph2">
+				<div style="margin-top:100px;">
+					<div class="keyword" style="width:450px; margin-left:150px;">
+					
+					<h1>키워드 Top 5</h1>
+					<img id="cloud1" src="/static/img/wordcloud.png" width="50px" class="hoverimg" onclick="openModal('워드클라우드_{{loop.index0}}.png','토픽{{loop.index0+1}}')">
+					{% for value in key[loop.index0] %}
+					<div class="top5">
+						<h2 style="float: left; font-size:20px;">{{loop.index0+1}}: {{value[0]}}</h2>
+						<h2 style="float: right; font-size:20px;">{{value[1]}}회</h2>
+					</div>
+					{% endfor %}
+					
+				</div>
+				</div>
+			</div>
+
+
+		<div class="keyword-keeper">
+			<div class="stat-graph2" style="width: 1400px; margin:20px;">
+				<div style="">
+					<div id="statgraph1{{loop.index0}}">
+						<script>
+				        var graphs = {{month[loop.index0] | safe}};
+				        Plotly.plot('statgraph1{{loop.index0}}',graphs);
+				    </script>
+				</div>
+				</div>
+			</div>
+			<div class="stat-graph2" style="width: 650px; margin:20px;">
+				<div >
+				<div id="statgraph2{{loop.index0}}">
+				    <script>
+				        var graphs = {{time[loop.index0] | safe}};
+				        Plotly.plot('statgraph2{{loop.index0}}',graphs);
+			    	</script>
+				</div>
+			</div>
+			</div>
+
+			<div class="stat-graph2" style="width: 650px; margin:20px;">
+				<div>
+					<div id="statgraph3{{loop.index0}}">
+				    <script>
+				        var graphs = {{day[loop.index0] | safe}};
+				        Plotly.plot('statgraph3{{loop.index0}}',graphs);
+			    	</script>
+				</div>
+				</div>
+			</div>
+
+
+
+
 	</div>
-	<div style="height:100px;"></div>
-	<h1 style="text-align:center">추가 분석된 내역 2건</h1>
-	<div id="report">
-		<table class="left-table pointer">
-			<tr>
-				<th></th>
-				<th>파일명</th>
-				<th>Topic 수</th>
-				<th>기간</th>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td>asdfadf</td>
-				<td>2</td>
-				<td>2017-07-01 ~ 2019-01-01</td>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td>asdfadf</td>
-				<td>2</td>
-				<td>2017-07-01 ~ 2019-01-01</td>
-			</tr>
-
-		</table>
-
-	
+	<div style="height:50px;">
 	</div>
 
 	</div>
 
-	</body>
+{% endfor %}
+
+
+	</div>
+	<!-- 
+	<script>
+		statgraph.on('plotly_click',function(data){
+			alert(data.points[0].x);
+		})
+	</script> -->
+
+
+
+<script>
+
+function openModal(path,topic){
+
+  var modal = document.getElementById('myModal');
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  var cloud1 = document.getElementById('cloud1');
+  var modalImg = document.getElementById("img01");
+  var captionText = document.getElementById("caption");
+
+  modal.style.display = "block";
+  modalImg.src = "/static/img/{{direc}}/"+path;
+  captionText.innerHTML = topic+"의 워드 클라우드";
+}
+
+</script>
+</body>
 </html>

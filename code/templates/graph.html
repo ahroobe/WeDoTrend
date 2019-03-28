@@ -19,11 +19,12 @@
 <body>
 	<div id="mySidenav" class="sidenav">
 		  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		  <a href="#">About</a>
-		  <a href="#">Services</a>
-		  <a href="#">Clients</a>
-		  <a href="#">Contact</a>
+		  <a href="{{url_for('index')}}">홈</a>
+		  <a href="{{url_for('graph')}}">트렌드 차트</a>
+		  <a href="{{url_for('allgraph')}}">분석 결과</a>
+		  <a href="{{url_for('select')}}">분석 시스템</a>
 	</div>
+
 
 	<div id="main" style="margin:0;padding:0;">
 
@@ -34,44 +35,60 @@
 				<div class="bar"></div>
 				<div class="bar"></div>
 			</div>
-			<h1 class="icon" style="margin: 0px; margin-left: 10px;"><span style="color:white; font-size:1.0em;">HyTV</span>
+			<h1 class="icon" style="margin: 0px; margin-left: 10px;" onclick="window.location.href='index'"><span style="color:white; font-size:1.0em;">HyTV</span>
 			<span style="color:orange; font-size:0.5em;">Hynix Trend Viewer</span></h1>
 			<img src="/static/img/hynix.png" style="height:30px;position:absolute;right:30px;top:5px;"/>
-
+			
 		</div>
 					<h1 style="color: orange; margin-top:100px; font-size:2.4em; text-align:center;">그래프</h1>
 	</div>
-
+<!-- 
 	
-	<h1 style="margin: 0 auto; text-align:center; padding:100px vertical-align:center; margin-bottom:100px;">일/주별 고객의 소리 통계</h1>
+	<h1 style="margin: 0 auto; text-align:center; padding:100px vertical-align:center; margin-bottom:100px;">일/주별 고객의 소리 통계</h1> -->
 	<div class="keyword-keeper">
+
+		<div class="stat-graph2" style="width:1000px; float:left;">
+			<div style="padding-bottom:50px;">
+			<div id="statgraph5">
+				<script>
+		        var graphs = {{plot3 | safe}};
+		        Plotly.plot('statgraph5',graphs,{title:'monthly graph'});
+		    </script>
+			</div>
+			</div>
+		</div>
+
+	<div id = "keyword1" class="stat-graph2 keyword" style="width:400px;height:auto;float:right; display:none;">
+			
+					
+<!-- 					<div class="top5">
+						<h2 style="float: left; font-size:20px;">2</h2>
+						<h2 style="float: right; font-size:20px;">3</h2>
+					</div> -->
+
+		</div>
+
 		<div class="stat-graph2" style="width:1000px;float:left;">
 			<div style="padding-bottom:50px;">
 			<div id="statgraph">
 				<script>
 		        var graphs = {{plot | safe}};
-		        Plotly.plot('statgraph',graphs,{title:'monthly graph'});
+		        Plotly.plot('statgraph',graphs);
 		    </script>
 			</div>
 			</div>
 		</div>
-		<div id = "keyword1" class="stat-graph2 keyword" style="width:300px;height:auto;float:right; display:none;">
-			
-					<h1 id="keyword1_h1">키워드 Top 5</h1>
-					<div class="top5">
-						<h2 style="float: left; font-size:20px;">2</h2>
-						<h2 style="float: right; font-size:20px;">3</h2>
-					</div>
-
-		</div>
 
 
-		<div class="stat-graph2" style="width:70%;float:left;">
+		
+
+
+		<div class="stat-graph2" style="width:1000px;float:left;">
 			<div style="padding-bottom:50px;">
 			<div id="statgraph2">
 			    <script>
 			        var graphs = {{plot2 | safe}};
-			        Plotly.plot('statgraph2',graphs,{title:'daily graph'});
+			        Plotly.plot('statgraph2',graphs);
 		    	</script>
 			</div>
 		</div>
@@ -99,12 +116,27 @@
 	</div>
 	
 	<script>
-		statgraph.on('plotly_click',function(data){
+		statgraph5.on('plotly_click',function(data){
 			var key_div =document.getElementById("keyword1");
 			var h1 =document.getElementById("keyword1_h1");
-			
-			h1.innerHTML = data.points[0].x;
+			$(document.body).css({'cursor' : 'wait'});
+			// h1.innerHTML = data.points[0].x + data.points[0].y+data.points[0].name;
 			key_div.style.display="block";
+
+			$.ajax({
+					type:'GET',
+					url: "/loadkeyword",
+					data: {
+						data : data.points[0].x
+					},
+
+					success: function(response){
+						$('#keyword1').html(response);
+						$(document.body).css({'cursor' : 'default'});
+						
+					}
+				});
+
 
 			// alert(data.points[0].x);
 

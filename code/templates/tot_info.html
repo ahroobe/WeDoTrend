@@ -70,7 +70,17 @@
 	  <a href="#" id="topic3">topic3</a>
 	  <a href="#" id="topic4">topic4</a>
 	  <a href="#" id="topic5">topic5</a>
-		  
+	</div>
+
+
+	<div id="mySidenav" class="sidenav">
+		  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		  <a href="{{url_for('index')}}">홈</a>
+		  <a href="{{url_for('graph')}}">트렌드 차트</a>
+		  <a href="{{url_for('allgraph')}}">분석 결과</a>
+		  <a href="{{url_for('select')}}">분석 시스템</a>
+	</div>
+
 		  <script>
 		  	 $("#topic1").click(function (){
                 $('html, body').animate({
@@ -99,18 +109,12 @@
             });
 		  </script>
 
-	</div>
 
 
-	<div id="mySidenav" class="sidenav">
-		  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		  <a href="#">About</a>
-		  <a href="#">Services</a>
-		  <a href="#">Clients</a>
-		  <a href="#">Contact</a>
-	</div>
+
 
 	<div id="main" style="margin:0;padding:0;">
+
 
 	<div id="myModal" class="modal">
 		  <!-- The Close Button -->
@@ -133,30 +137,26 @@
 				<div class="bar"></div>
 				<div class="bar"></div>
 			</div>
-			<h1 class="icon" style="margin: 0px; margin-left: 10px;"><span style="color:white; font-size:1.0em;">HyTV</span>
+			<h1 class="icon" style="margin: 0px; margin-left: 10px;" onclick="window.location.href='index'"><span style="color:white; font-size:1.0em;">HyTV</span>
 			<span style="color:orange; font-size:0.5em;">Hynix Trend Viewer</span></h1>
 			<img src="/static/img/hynix.png" style="height:30px;position:absolute;right:30px;top:5px;"/>
-
+			
 		</div>
 					<h1 style="color: orange; margin-top:100px; font-size:2.4em; text-align:center;">전체 데이터 분석 결과</h1>
 	</div>
 
-	<table class="left-table">
+	<table class="left-table" style="margin-bottom:50px;">
 		<tr>
 			<th>기간</th>
 			<td>2008-04-04 ~ 2019-03-21</td>
 		</tr>
 		<tr>
 			<th>게시글 수</th>
-			<td>9,240</td>
-		</tr>
-		<tr>
-			<th>단어 수</th>
-			<td>9,2400000</td>
+			<td>{{length}}</td>
 		</tr>
 	</table>
 
-	<table class="left-table">
+	<table class="left-table" style="margin-bottom:50px;">
 		
 
 		<tr>
@@ -169,34 +169,26 @@
 		</tr>
 		<tr>
 			<th>주제</th>
-			<td>식당/편의식 시스템 불만/건의</td>
-			<td>버스 칭찬/분실물 문의/서비스 평가</td>
-			<td>버스 노선 문의/불만</td>
-			<td>식당 메뉴 관련 의견</td>
-			<td>버스 내 환경/인프라에 대한 건의</td>
+			<td>버스 내 환경, 인프라 불만/건의</td>
+			<td>버스 노선, 운행 불만/건의</td>
+			<td>버스, 기숙사, 식당 문의</td>
+			<td>식당, 편의식 평가</td>
+			<td>구성원에 대한 평가</td>
 		</tr>
 		<tr>
 			<th>게시글 수</th>
-			<td>2</td>
-			<td>2</td>
-			<td>2</td>
-			<td>2</td>
-			<td>2</td>
+			{% for le in tot_len %}
+				<td>{{le}}</td>
+			{% endfor %}
+
 		</tr>
-		<tr>
-			<th>단어 수</th>
-			<td>2</td>
-			<td>2</td>
-			<td>2</td>
-			<td>2</td>
-			<td>2</td>
-		</tr>
+
 	</table>
 
 {% for graphe in plot %}	
 	<div id="topic_div{{loop.index0}}" style="border:1px solid #eee; border-radius:20px;
 	 width:80%; margin:20 auto; padding-bottom:50px; height:auto;">
-		<h1 style="margin: 30 auto; text-align:center; padding:100px vertical-align:center; ">Topic 1</h1>
+		<h1 style="margin: 30 auto; text-align:center; padding:100px vertical-align:center; ">Topic {{loop.index0+1}}</h1>
 
 			<div class="stat-graph2" style="width: 650px; margin:20px;">
 				<div >
@@ -293,7 +285,7 @@ function openModal(path,topic){
   var captionText = document.getElementById("caption");
 
   modal.style.display = "block";
-  modalImg.src = "/static/img/"+path;
+  modalImg.src = "./static/img/"+path;
   captionText.innerHTML = topic+"의 워드 클라우드";
 }
 
